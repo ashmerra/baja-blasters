@@ -1,9 +1,0 @@
-#!/bin/sh
-# Serve Baja Blasters on this machine's Tailscale IPv4 address only.
-set -eu
-ip=$(/usr/bin/tailscale ip -4)
-if [ -z "$ip" ]; then
-  printf '%s\n' 'Tailscale IPv4 address unavailable' >&2
-  exit 1
-fi
-exec /usr/bin/python3 "$(dirname "$0")/serve.py" --host "$ip" --port "${BAJA_BLASTERS_PORT:-8790}"
