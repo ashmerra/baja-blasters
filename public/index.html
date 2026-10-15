@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0b2a6b">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Baja Blasters">
+  <title>Baja Blasters — Part the Red Team</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/hero.webp" as="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" aria-label="Baja Blasters game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <div class="hud-left">
+          <div id="hearts" class="hearts" aria-label="Faith"></div>
+          <div class="followers"><span class="follower-icon"></span><span id="followers">0</span><span id="mult" class="mult"></span></div>
+        </div>
+        <div class="hud-center">
+          <div id="score" class="score">0</div>
+          <div id="meters" class="meters">0 m</div>
+        </div>
+        <div class="hud-right">
+          <button id="pauseBtn" class="icon-btn" aria-label="Pause">❚❚</button>
+        </div>
+      </div>
+      <div class="dew">
+        <div class="dew-label">DEW</div>
+        <div class="dew-bar"><div id="dewFill" class="dew-fill"></div></div>
+      </div>
+      <button id="blastBtn" class="blast-btn" aria-label="Baja Blast">
+        <span class="blast-word">BAJA<br>BLAST</span>
+        <span id="blastCount" class="blast-count">0</span>
+        <svg class="blast-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"></circle><circle id="blastProgress" class="progress" cx="50" cy="50" r="46"></circle></svg>
+      </button>
+    </div>
+
+    <section id="title" class="screen title-screen">
+      <div class="hero" role="img" aria-label="Moses parting a red sea with two bottles of Baja Blast"></div>
+      <div class="title-shade"></div>
+      <div class="title-content">
+        <h1 class="logo"><span>BAJA</span><span>BLASTERS</span></h1>
+        <p class="tagline">PART THE RED TEAM</p>
+        <button id="playBtn" class="play-btn">PLAY</button>
+        <p id="bestLine" class="best"></p>
+        <details class="how">
+          <summary>How to play</summary>
+          <ul>
+            <li><b>Drag</b> anywhere to lead the Baja Blasters.</li>
+            <li>Your bottles spray non-stop, holding back the <b class="red">red sea</b>. Grab <b class="teal">Baja Blast</b> to keep the Dew flowing.</li>
+            <li>Don't touch the water. Spray the <b class="red">Red Team</b> soldiers into the sea before they reach your people.</li>
+            <li>Every 5 bottles charges a <b class="teal">BAJA BLAST</b>. Tap the button to part the whole sea.</li>
+            <li>Stone tablets restore Faith. Pick up stragglers to raise your multiplier.</li>
+          </ul>
+        </details>
+      </div>
+      <button id="muteBtn" class="icon-btn mute" aria-label="Toggle sound">🔊</button>
+    </section>
+
+    <section id="pause" class="screen panel-screen hidden">
+      <div class="panel">
+        <h2>PAUSED</h2>
+        <button id="resumeBtn" class="play-btn">RESUME</button>
+        <button id="quitBtn" class="ghost-btn">QUIT TO TITLE</button>
+      </div>
+    </section>
+
+    <section id="over" class="screen panel-screen hidden">
+      <div class="over-hero"></div>
+      <div class="panel">
+        <h2 id="overTitle">THE RED TEAM<br>CLOSED IN</h2>
+        <div class="stats">
+          <div><span>Score</span><b id="oScore">0</b></div>
+          <div><span>Distance</span><b id="oMeters">0 m</b></div>
+          <div><span>People led</span><b id="oPeople">0</b></div>
+          <div><span>Soldiers swept</span><b id="oSwept">0</b></div>
+          <div><span>Bottles</span><b id="oBottles">0</b></div>
+          <div><span>Best</span><b id="oBest">0</b></div>
+        </div>
+        <p class="quote">Some seas part for faith.<br>This one parts for <b>Baja Blast</b>.</p>
+        <button id="againBtn" class="play-btn">BLAST AGAIN</button>
+        <button id="homeBtn" class="ghost-btn">TITLE</button>
+      </div>
+    </section>
+
+    <div id="rotate" class="rotate"><div>Turn your phone upright<br>to part the sea</div></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
