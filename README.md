@@ -1,3 +1,5 @@
+<img src="public/assets/icon-192.png" width="64" height="64" alt="">
+
 # Baja Blasters
 
 Part the Red Team. A portrait phone browser game.
